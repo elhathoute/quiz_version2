@@ -9,21 +9,42 @@
     <title>Quizz</title>
 </head>
 <body>
-    <nav>
-        <div class="logo-container">
-            <img src="https://image.freepik.com/vecteurs-libre/logo-quiz-symbole-icone-questionnaire-sondage_101884-1076.jpg" alt="img-quiz">
+    <!-- bar d'avencement -->
+    <div class="container">
+    <ul class="progressbar">
+    <li id="information" class="active">Information</li>
+    <li id="quiz" >Quiz</li>
+    <li id="resultat">Result</li>
+    </ul>
+    </div>
+    <!-- fin bar d'avencement -->
+    <!-- information quiz -->
+     <!-- Info Box -->
+     <div class="info_box">
+        <div id="info-title" class="info-title"><span>Some Rules of this Quiz</span></div>
+        <div id="info-list" class="info-list">
+            <div class="info">1. You will have only <span>30 seconds</span> per each question.</div>
+            <div class="info">2. Once you select your answer, it can't be undone.</div>
+            <div class="info">3. You can't select any option once time goes off.</div>
+            <div class="info">4. You can't exit from the Quiz while you're playing.</div>
+            <div class="info">5. You'll get points on the basis of your correct answers.</div>
         </div>
-        <div class="nav-button-container">
-            <a href="#">Home</a>
-            <a href="#">Quiz</a>
-            <a href="#">Contact</a>
+
+          <!-- debut quiz -->
+              
+    <div id="quiz_box" class="quiz_box">
+        <div id="title" class="title"> </div>
+        <div class="timer"></div>    
+    </div>
+            <!-- fin quiz -->
+
+
+        <div class="buttons">
+            <button id="next" class="next">Next</button>
         </div>
-        <div class="burger-button-container">
-            <i class="fas fa-bars"></i>
-        </div>
-    </nav>
- <!-- debut de  Quiz button -->
- <div class="start_btn"><button>start Quiz</button></div>
+    </div>
+    <!-- fin information quiz -->
   
-</body>
+    </body>
+    <script src="dist/main.js"></script>
 </html>

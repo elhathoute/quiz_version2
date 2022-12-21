@@ -5,86 +5,122 @@
   font-family: Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
+.container {
   width: 100%;
-  height: 100vh;
-  background-color: #f4f4f4;
+  height: 100px;
+  margin-top: 200px;
+  padding: 5px;
 }
-body nav {
-  width: 100%;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background-color: white;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+.container .progressbar {
+  counter-reset: etape;
 }
-body nav .logo-container {
-  width: 33, 3%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-body nav .logo-container img {
-  max-height: 100%;
-}
-body nav .logo-container img:hover {
-  cursor: pointer;
-}
-body nav .nav-button-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 33, 3%;
-  height: 100%;
-}
-body nav .nav-button-container a {
-  text-decoration: none;
-  padding: 20px;
-  transition: 300ms;
-  margin: 0px 10px 0px 10px;
+.container .progressbar li {
+  list-style-type: none;
+  float: left;
+  width: 33.33%;
+  position: relative;
   text-align: center;
-  color: black;
-  font-weight: bold;
+  font-weight: 600;
 }
-body nav .nav-button-container a:hover {
-  background-color: rgb(0, 162, 255);
-  border-radius: 10px;
+.container .progressbar li::before {
+  /* CSS pour crer  steper block avant les li */
+  counter-increment: etape;
+  content: "etape:" counter(etape);
+  height: 40px;
+  width: 90px;
+  border: 2px solid rgb(43, 40, 40);
+  display: block;
+  padding-top: 12px;
+  text-align: center;
+  margin: 0 auto 10px auto;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
 }
-body nav .burger-button-container {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  width: 33, 3%;
-  height: 100%;
-}
-body nav .burger-button-container i {
-  margin-left: 80%;
-  padding: 10px;
-  font-size: 25px;
-  transition: 300ms;
-}
-body nav .burger-button-container i:hover {
-  background-color: rgb(0, 132, 255);
-  border-radius: 10px;
-  cursor: pointer;
-}
-body .start_btn {
+.container .progressbar li::after {
+  /* CSS pour crer horizontal line*/
+  content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 4px 8px 0 rgba(14, 13, 13, 0.2), 0 6px 20px 0 rgba(117, 162, 240, 0.19);
+  width: 100%;
+  height: 5px;
+  background-color: #ddd;
+  top: 25px;
+  left: -50%;
+  z-index: -1;
 }
-body .start_btn button {
-  font-size: 25px;
-  font-weight: 500;
-  color: white;
-  padding: 15px 30px;
-  outline: none;
-  border: none;
-  border-radius: 2px;
-  background: rgb(5, 146, 5);
+.container .progressbar li:first-child::after {
+  content: none;
+}
+.container .progressbar li.active {
+  color: #05795c;
+}
+.container .progressbar li.active::before {
+  border-color: #05795c;
+}
+.container .progressbar li.active + li::after {
+  -webkit-animation: backgrounds 2s infinite;
+          animation: backgrounds 2s infinite;
+}
+@-webkit-keyframes backgrounds {
+  0% {
+    background-color: #abff2d;
+  }
+  50% {
+    background-color: #02ad02;
+  }
+  100% {
+    background-color: #08effb;
+  }
+}
+@keyframes backgrounds {
+  0% {
+    background-color: #abff2d;
+  }
+  50% {
+    background-color: #02ad02;
+  }
+  100% {
+    background-color: #08effb;
+  }
+}
+
+.info_box {
+  margin-top: 40px;
+}
+.info_box .info-title {
+  color: red;
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 40px;
+  margin-top: 50px;
+}
+.info_box .info-list {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 40px;
+}
+.info_box .buttons {
+  text-align: center;
+}
+.info_box .buttons .next {
   cursor: pointer;
+  width: 30%;
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-family: "Poiret One", cursive;
+  font-size: 1em;
+  background: #2ecc71;
+}
+.info_box .buttons .next:hover {
+  background: #26ab5f;
+  transition: all 0.3s ease;
+}
+.info_box .buttons .next:active {
+  background: #176437;
+}
+
+.quiz_box {
+  display: inline;
 }/*# sourceMappingURL=main.css.map */

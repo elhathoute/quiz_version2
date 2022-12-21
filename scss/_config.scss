@@ -1,20 +1,37 @@
-$backround-body:#f4f4f4;
-$white-color:white;
-$blue-color:rgb(0, 132, 255) ;
-$green-color:rgb(5, 146, 5);
-$box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
+
 
 
 @mixin flex($justify-content){
     display: flex;
-    align-items: center;
-    justify-content: $justify-content;
+    align-items: $justify-content;
+    justify-content: center;
 }
 
-@mixin heightwidth{
-    width: 33,3%;
-    height: 100%;
+@mixin backrounds-animation {
+    @keyframes backgrounds {
+        0% {
+          background-color: $backround0;
+        }
+        50% {
+          background-color:$backround50;
+        }
+        100% {
+          background-color: $backround100;
+        }
+    }
+    animation: backgrounds 2s infinite;
 }
+
+@mixin button-bg($bg) {
+    background: $bg;
+    &:hover {
+      background:darken($bg,8%);
+      transition: all 0.3s ease;
+    }
+    &:active {
+      background:darken($bg,25%);
+    } 
+  }
 
 
 *{
