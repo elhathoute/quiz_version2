@@ -121,6 +121,10 @@
   background: #176437;
 }
 
-.quiz_box {
-  display: inline;
+.quiz_box .title {
+  font-size: 10px;
+  color: rgb(8, 8, 70);
+  text-align: center;
+  border: 2px solid black;
+  margin: 20px;
 }/*# sourceMappingURL=main.css.map */
