@@ -24,10 +24,11 @@
      line-height:40px;
 }
    .buttons{
-    text-align: center;
-    
-    
-  
+   //  text-align: center;
+   display: flex;
+   justify-content: space-around;
+   align-items:center;
+   padding: 10px 80px;
    .next{
     cursor: pointer;
     width: 30%;
@@ -37,7 +38,19 @@
     border-radius:3px;
     font-family: 'Poiret One', cursive;
     font-size:1em;
+    border-radius: 69px;
     @include button-bg(#2ecc71);
+   }
+   .retour{
+      @extend .next;
+      @include button-bg(#6b6807);
+      
+      
+   }
+   .submit{
+      @extend .retour;
+      @include button-bg(#07396b);
+      
    }
 }
 }
@@ -50,6 +63,39 @@
       border: 2px solid black;
       margin: 20px;
    }
+ .answers-box{
+   @extend .title;
+   font-size: 20px;
+   padding: 30px;
+
+  .answers{
+   padding: 0px 10px ;
+   display: flex;
+   justify-content: start;
+   background-color: beige;
+   &:not(:last-child) {
+      border-bottom: 2px solid rgb(161, 130, 130);
+   }
+  
+  
+   $i:0;
+   @while($i<4){
+      & #option_#{$i}{
+         cursor: pointer;
+         color: rgb(50*$i, 13*$i, 20*$i);
+         @if($i==0){
+            font-size: 14px;
+         }@else{
+            font-size: 14px+$i;
+         }
+         $i:$i+1;
+         margin:2px;
+      }
+     
+   }
+   
+  }
+ }
 
 
 }

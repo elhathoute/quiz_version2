@@ -100,9 +100,12 @@
   line-height: 40px;
 }
 .info_box .buttons {
-  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 80px;
 }
-.info_box .buttons .next {
+.info_box .buttons .next, .info_box .buttons .retour, .info_box .buttons .submit {
   cursor: pointer;
   width: 30%;
   color: white;
@@ -111,20 +114,78 @@
   border-radius: 3px;
   font-family: "Poiret One", cursive;
   font-size: 1em;
+  border-radius: 69px;
   background: #2ecc71;
 }
-.info_box .buttons .next:hover {
+.info_box .buttons .next:hover, .info_box .buttons .retour:hover, .info_box .buttons .submit:hover {
   background: #26ab5f;
   transition: all 0.3s ease;
 }
-.info_box .buttons .next:active {
+.info_box .buttons .next:active, .info_box .buttons .retour:active, .info_box .buttons .submit:active {
   background: #176437;
 }
+.info_box .buttons .retour, .info_box .buttons .submit {
+  background: #6b6807;
+}
+.info_box .buttons .retour:hover, .info_box .buttons .submit:hover {
+  background: #454304;
+  transition: all 0.3s ease;
+}
+.info_box .buttons .retour:active, .info_box .buttons .submit:active {
+  background: black;
+}
+.info_box .buttons .submit {
+  background: #07396b;
+}
+.info_box .buttons .submit:hover {
+  background: #042545;
+  transition: all 0.3s ease;
+}
+.info_box .buttons .submit:active {
+  background: black;
+}
 
-.quiz_box .title {
+.quiz_box .title, .quiz_box .answers-box {
   font-size: 10px;
   color: rgb(8, 8, 70);
   text-align: center;
   border: 2px solid black;
   margin: 20px;
+}
+.quiz_box .answers-box {
+  font-size: 20px;
+  padding: 30px;
+}
+.quiz_box .answers-box .answers {
+  padding: 0px 10px;
+  display: flex;
+  justify-content: start;
+  background-color: beige;
+}
+.quiz_box .answers-box .answers:not(:last-child) {
+  border-bottom: 2px solid rgb(161, 130, 130);
+}
+.quiz_box .answers-box .answers #option_0 {
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  margin: 2px;
+}
+.quiz_box .answers-box .answers #option_1 {
+  cursor: pointer;
+  color: rgb(50, 13, 20);
+  font-size: 15px;
+  margin: 2px;
+}
+.quiz_box .answers-box .answers #option_2 {
+  cursor: pointer;
+  color: rgb(100, 26, 40);
+  font-size: 16px;
+  margin: 2px;
+}
+.quiz_box .answers-box .answers #option_3 {
+  cursor: pointer;
+  color: rgb(150, 39, 60);
+  font-size: 17px;
+  margin: 2px;
 }/*# sourceMappingURL=main.css.map */
