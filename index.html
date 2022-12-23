@@ -9,8 +9,13 @@
     <title>Quizz</title>
 </head>
 <body>
+    <!-- input -->
+
     <!-- bar d'avencement -->
     <div class="container">
+        <div id="user" class="user">
+            <input  required autocomplete="none" placeholder="Votre Nom" type="text" name="user-input" id="user-input">
+        </div>
     <ul class="progressbar">
     <li id="information" class="active">Information</li>
     <li id="quiz" >Quiz</li>
@@ -23,11 +28,11 @@
      <div class="info_box">
         <div id="info-title" class="info-title"><span>Some Rules of this Quiz</span></div>
         <div id="info-list" class="info-list">
-            <div class="info">1. You will have only <span>30 seconds</span> per each question.</div>
-            <div class="info">2.You can retour a previous question </div>
+            <div class="info">1. You will have only <span>30 seconds</span> per each question. <i class="fa fa-clock-o" aria-hidden="true"></i></div>
+            <div class="info">2.enter your name Required!</div>
             <div class="info">3. You can replay text </div>
             <div class="info">4. You can't exit from the Quiz while you're playing.</div>
-            <div class="info">5. You'll get points on the basis of your correct answers.</div>
+            <div class="info">5. You'll get points  of your correct answers.</div>
         </div>
 
           <!-- debut quiz -->

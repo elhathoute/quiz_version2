@@ -7,14 +7,14 @@
 
 
 .info_box{
-   margin-top: 40px;
+   margin-top: 150px;
    
    .info-title{
-    color: rgb(255, 255, 255);
+    color: rgb(213, 196, 170);
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 40px;
-    margin-top: 50px;
+    text-shadow:1px 1px #7dcc2e;
   
    }
    .info-list{
@@ -58,7 +58,7 @@
 .quiz_box{
    .title{
       font-size: 14px;
-      color: rgba(34, 250, 84, 0.803);
+      color: rgba(206, 208, 206, 0.803);
       text-align: center;
       border: 2px dashed rgb(41, 18, 170);
       border-radius: 5px;

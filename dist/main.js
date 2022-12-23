@@ -6,7 +6,7 @@ let questions =[
       option_2:"Amazon EC2 instances can be launched on demand when needed",
       option_3:"Users can permanently run enough instances to handle peak workloads.",
       vrai:"Amazon EC2 instances can be launched on demand when needed",
-      explication:"The ability to launch instances on demand when needed allows users to launch and terminate instances in response to a varying workload. This is a more economical practice than purchasing enough on-premises servers to handle the peak load."
+      explication:"Q1:C-The ability to <a href='https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html'> launch instances on demand </a> when needed allows users to launch and terminate instances in response to a varying workload. This is a more economical practice than purchasing enough on-premises servers to handle the peak load."
       
     
   },{
@@ -16,7 +16,7 @@ let questions =[
     option_2:"Amazon EC2",
     option_3:"Users can permanently run enough instances to handle peak workloads.",
     vrai:"AWS Database Migration Service (AWS DMS)",
-    explication:" AWS DMS helps users migrate databases to AWS quickly and securely. The source database remains fully operational during the migration, minimizing downtime to applications that rely on the database. AWS DMS can migrate data to and from most widely used commercial and open-source databases."
+    explication:"Q2:B- AWS DMS helps users migrate databases to AWS quickly and securely. The source database remains fully operational during the migration, minimizing downtime to applications that rely on the database.<a href='https://aws.amazon.com/fr/dms/'> AWS DMS</a> can migrate data to and from most widely used commercial and open-source databases."
     
   },{
     question:"3-Which AWS offering enables users to find, buy, and immediately start using software solutions in their AWS environment?",
@@ -25,7 +25,7 @@ let questions =[
     option_2:"Amazon  AWS SDK",
     option_3:"AWS Marketplace",
     vrai:"AWS Marketplace",
-    explication:" AWS Marketplace is a digital catalog with thousands of software listings from independent software vendors that makes it easy to find, test, buy, and deploy software that runs on AWS."
+    explication:"Q3:D- <a href='https://aws.amazon.com/marketplace/'>AWS Marketplace</a> is a digital catalog with thousands of software listings from independent software vendors that makes it easy to find, test, buy, and deploy software that runs on AWS."
     
   }
 
@@ -52,6 +52,9 @@ let replay =document.getElementById('retour');
 let submit =document.getElementById('submit');
 // let info_title=document.getElementById('info-title');
 let answers=document.getElementById('answers-box');
+
+let user_input=document.getElementById("user-input");
+
 let currentIndex=0;
 let totalReponseVraix=0;
 
@@ -79,14 +82,33 @@ replay.addEventListener('click',function(){
 
 // }
 });
+next.style.display='none';
+user_input.addEventListener("keyup",function(){
+  if(this.value==''){
+    next.style.display='none';
+   
+
+    }else{
+      next.style.display='block';
+    }
+})
+
 
 next.addEventListener('click',function(){
- 
+  const divUser = document.createElement("div");
+
+user_input.replaceWith(divUser);
+let nomUser=user_input.value;
+nomUser.className="nom_user";
+divUser.innerHTML="<h3>Bonjour <i class='fa fa-user' aria-hidden='true'></i>  : <span id='nom-user'>"+nomUser +" </span></h3>";
+console.log(user_input);
+ console.log(user_input.value);
    removeBtnNext();
     infos.style.display = "none";
     quiz.style.display = "inline";
     information.classList.remove('active');
     quizBar.classList.add('active');
+    
     info_title.innerHTML=`
     <div id="title" class="title"> Quiz Application</div>
     <div class="timer">30</div>  
@@ -232,22 +254,24 @@ function afficherResultat(count){
     //supp titre de quiz
      title.remove();
      info_title.remove();     //
+     let nomUser=user_input.value;
      if (totalReponseVraix==count){ 
+
       
-      answers.innerHTML = '<span>and congratulation! 🎉, You got '+ totalReponseVraix +'</p> out of <p>'+ count +'</p></span>';
+      answers.innerHTML = '<span id="nom-user">'+nomUser +'</span> congratulation! 🎉, You got '+ totalReponseVraix +'</p> out of <p>'+ count +'</p></span>';
 
   }
   else if(totalReponseVraix >=(count/2) ){
-    answers.innerHTML= '<span>and nice 😎, You got '+ totalReponseVraix +' out of '+ count +'</span>';
+    answers.innerHTML= '<span id="nom-user">'+nomUser +'</span>   nice 😎, You got '+ totalReponseVraix +' out of '+ count +'</span>';
       
   }
   else { 
-    answers.innerHTML= '<span>and sorry 😐, You got only '+ totalReponseVraix +' out of '+ count +'</span>';
+    answers.innerHTML= '<span id="nom-user">'+nomUser +'</span>  sorry 😐, You got only '+ totalReponseVraix +' out of '+ count +'</span>';
       
   }
     // answers.innerHTML=`<span>Votre score est : ${totalReponseVraix}/${count}</span>`;
 if(arrayshowQuest.length>0){
-  answers.innerHTML+='<h3>Votre resultat est:</h3>';
+  answers.innerHTML+='<h3>Votre Explication est:</h3>';
   for(i=0;i<arrayshowQuest.length;i++){
     answers.innerHTML+= "<p>la question N°:"+(i+1)+"</p>";
     answers.innerHTML+= "<p>explication"+questions[arrayshowQuest[i]].explication+"</p>";
