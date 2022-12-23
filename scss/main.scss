@@ -10,7 +10,7 @@
    margin-top: 40px;
    
    .info-title{
-    color: red;
+    color: rgb(255, 255, 255);
     text-align: center;
     font-size: 18px;
     margin-bottom: 40px;
@@ -31,13 +31,13 @@
    padding: 10px 80px;
    .next{
     cursor: pointer;
-    width: 30%;
+    width: 90%;
     color:white;
     text-decoration:none;
     padding:5px 10px;
     border-radius:3px;
     font-family: 'Poiret One', cursive;
-    font-size:1em;
+    font-size:16px;
     border-radius: 69px;
     @include button-bg(#2ecc71);
    }
@@ -48,7 +48,7 @@
       
    }
    .submit{
-      @extend .retour;
+      @extend .next;
       @include button-bg(#07396b);
       
    }
@@ -57,10 +57,11 @@
 
 .quiz_box{
    .title{
-      font-size: 10px;
-      color: rgb(8, 8, 70);
+      font-size: 14px;
+      color: rgba(34, 250, 84, 0.803);
       text-align: center;
-      border: 2px solid black;
+      border: 2px dashed rgb(41, 18, 170);
+      border-radius: 5px;
       margin: 20px;
    }
  .answers-box{
@@ -72,7 +73,9 @@
    padding: 0px 10px ;
    display: flex;
    justify-content: start;
-   background-color: beige;
+   background-color: rgb(233, 233, 233);
+   border-radius: 5px;
+  margin-top: 10px;
    &:not(:last-child) {
       border-bottom: 2px solid rgb(161, 130, 130);
    }
@@ -82,9 +85,9 @@
    @while($i<4){
       & #option_#{$i}{
          cursor: pointer;
-         color: rgb(50*$i, 13*$i, 20*$i);
+         color: rgb(10*$i, 7*$i, 70*$i);
          @if($i==0){
-            font-size: 14px;
+            font-size: 16px;
          }@else{
             font-size: 14px+$i;
          }

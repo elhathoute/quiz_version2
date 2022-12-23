@@ -5,7 +5,8 @@ let questions =[
       option_1:"Users retain full administrative access to their Amazon EC2 instance",
       option_2:"Amazon EC2 instances can be launched on demand when needed",
       option_3:"Users can permanently run enough instances to handle peak workloads.",
-      vrai:"Amazon EC2 instances can be launched on demand when needed"
+      vrai:"Amazon EC2 instances can be launched on demand when needed",
+      explication:"The ability to launch instances on demand when needed allows users to launch and terminate instances in response to a varying workload. This is a more economical practice than purchasing enough on-premises servers to handle the peak load."
       
     
   },{
@@ -14,7 +15,8 @@ let questions =[
     option_1:"AWS Database Migration Service (AWS DMS)",
     option_2:"Amazon EC2",
     option_3:"Users can permanently run enough instances to handle peak workloads.",
-    vrai:"AWS Database Migration Service (AWS DMS)"
+    vrai:"AWS Database Migration Service (AWS DMS)",
+    explication:" AWS DMS helps users migrate databases to AWS quickly and securely. The source database remains fully operational during the migration, minimizing downtime to applications that rely on the database. AWS DMS can migrate data to and from most widely used commercial and open-source databases."
     
   },{
     question:"3-Which AWS offering enables users to find, buy, and immediately start using software solutions in their AWS environment?",
@@ -22,7 +24,8 @@ let questions =[
     option_1:"AWS OpsWorks",
     option_2:"Amazon  AWS SDK",
     option_3:"AWS Marketplace",
-    vrai:"AWS Marketplace"
+    vrai:"AWS Marketplace",
+    explication:" AWS Marketplace is a digital catalog with thousands of software listings from independent software vendors that makes it easy to find, test, buy, and deploy software that runs on AWS."
     
   }
 
@@ -45,37 +48,36 @@ let resultat=document.getElementById('resultat');
 let title=document.getElementById('title');
 quiz.style.display = "none";
 let next =document.getElementById('next');
-let retour =document.getElementById('retour');
+let replay =document.getElementById('retour');
 let submit =document.getElementById('submit');
+// let info_title=document.getElementById('info-title');
 let answers=document.getElementById('answers-box');
 let currentIndex=0;
 let totalReponseVraix=0;
-retour.style.display="none";
 
-
+replay.style.display="none";
 
 submit.style.display="none";
-retour.addEventListener('click',function(){
- 
-   if(currentIndex>0) {
-    let reponsrvraix=questions[currentIndex].vrai;
-    console.log('check answer');
-    currentIndex--;
-  
-   
-    checkAnswer(reponsrvraix,questionCount);
-
-       //remove old question
-       title.innerHTML='';
-       answers.innerHTML='';
-//get autre question
-addQuestion(questions[currentIndex],questionCount);
-}
-
-else if(currentIndex==0 ) {
+replay.addEventListener('click',function(){
   window.location.reload();
 
-}
+//    if(currentIndex>0) {
+//      let reponsrvraix=questions[currentIndex].vrai;
+//     console.log('check answer');
+//     currentIndex--;
+//     checkAnswer(reponsrvraix,currentIndex);
+
+//        //remove old question
+//        title.innerHTML='';
+//        answers.innerHTML='';
+// //get autre question
+// addQuestion(questions[currentIndex],questionCount);
+// }
+
+// else if(currentIndex==0 ) {
+//   window.location.reload();
+
+// }
 });
 
 next.addEventListener('click',function(){
@@ -98,13 +100,13 @@ next.addEventListener('click',function(){
 
   submit.onclick=function(){
    
-      retour.style.display="block";
+      // retour.style.display="block";
     
     
     let reponsrvraix=questions[currentIndex].vrai;
-    console.log('check answer');
+    // console.log('check answer');
      currentIndex++;
-    checkAnswer(reponsrvraix,questionCount);
+    checkAnswer(reponsrvraix,currentIndex);
 
        //remove old question
        title.innerHTML='';
@@ -132,8 +134,8 @@ function addQuestion(quest,count){
     //crer le text de question
     let questionText=document.createTextNode(quest.question);
     
-    console.log(questionTitre);
-    console.log(questionText);
+    // console.log(questionTitre);
+    // console.log(questionText);
     //append
     questionTitre.appendChild(questionText);
     title.appendChild(questionTitre);
@@ -184,7 +186,11 @@ function addQuestion(quest,count){
  }
 
 }
-function checkAnswer(answer){
+
+var arrayshowQuest=[];
+
+
+function checkAnswer(answer,index){
   // console.log(answer);
   // console.log(count);
 
@@ -195,13 +201,26 @@ function checkAnswer(answer){
   // console.log(lesReponse[i]);
   if(lesReponse[i].checked){
     ReponseChoisi=lesReponse[i].dataset.option;
+    if(answer==ReponseChoisi){
+      
+      arrayshowQuest.push(index-1);
+    //  console.log(arrayshowQuest);
+    //remove double correct answer
+    // arrayshowQuest=[... new Set(arrayshowQuest)];
+      console.log(arrayshowQuest);
+    //  console.log(questions[index-1].explication);
+  
+    }
+   
   }
  }
 
  console.log(`corect is':${answer}`);
  console.log(`choisi is':${ReponseChoisi}`);
  if(answer==ReponseChoisi){
+  // alert("vrais");
   totalReponseVraix++;
+
  }
 
 console.log(totalReponseVraix);
@@ -210,13 +229,52 @@ console.log(totalReponseVraix);
 function afficherResultat(count){
 
   if(currentIndex===count){
-    //supp titre
+    //supp titre de quiz
      title.remove();
-     //
-    answers.innerHTML=`<span>Votre score est : ${totalReponseVraix}/${count}</span>`;
+     info_title.remove();     //
+     if (totalReponseVraix==count){ 
+      
+      answers.innerHTML = '<span>and congratulation! 🎉, You got '+ totalReponseVraix +'</p> out of <p>'+ count +'</p></span>';
+
+  }
+  else if(totalReponseVraix >=(count/2) ){
+    answers.innerHTML= '<span>and nice 😎, You got '+ totalReponseVraix +' out of '+ count +'</span>';
+      
+  }
+  else { 
+    answers.innerHTML= '<span>and sorry 😐, You got only '+ totalReponseVraix +' out of '+ count +'</span>';
+      
+  }
+    // answers.innerHTML=`<span>Votre score est : ${totalReponseVraix}/${count}</span>`;
+if(arrayshowQuest.length>0){
+  answers.innerHTML+='<h3>Votre resultat est:</h3>';
+  for(i=0;i<arrayshowQuest.length;i++){
+    answers.innerHTML+= "<p>la question N°:"+(i+1)+"</p>";
+    answers.innerHTML+= "<p>explication"+questions[arrayshowQuest[i]].explication+"</p>";
+  }
+}
+    
+   
+
+    
+
+
+
+
+
+
+
+
 
     submit.style.display="none";
-     console.log(count);
+    quizBar.classList.remove('active');
+    resultat.classList.add('active');
+    retour.style.display="block";
+    retour.addEventListener('click',function(){
+     
+      window.location.reload();
+    });
+    
   }
 
   
