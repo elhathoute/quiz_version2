@@ -123,7 +123,6 @@ body {
 .info_box .info-list {
   display: block;
   text-align: center;
-  margin-bottom: 20px;
   line-height: 40px;
 }
 .info_box .buttons {
@@ -132,7 +131,7 @@ body {
   align-items: center;
   padding: 10px 80px;
 }
-.info_box .buttons .next, .info_box .buttons .submit, .info_box .buttons .retour {
+.info_box .buttons .next, .info_box .buttons .retour, .info_box .buttons .submit, .info_box .buttons .replay {
   cursor: pointer;
   width: 90%;
   color: white;
@@ -144,21 +143,21 @@ body {
   border-radius: 69px;
   background: #2ecc71;
 }
-.info_box .buttons .next:hover, .info_box .buttons .submit:hover, .info_box .buttons .retour:hover {
+.info_box .buttons .next:hover, .info_box .buttons .retour:hover, .info_box .buttons .submit:hover, .info_box .buttons .replay:hover {
   background: #26ab5f;
   transition: all 0.3s ease;
 }
-.info_box .buttons .next:active, .info_box .buttons .submit:active, .info_box .buttons .retour:active {
+.info_box .buttons .next:active, .info_box .buttons .retour:active, .info_box .buttons .submit:active, .info_box .buttons .replay:active {
   background: #176437;
 }
-.info_box .buttons .retour {
+.info_box .buttons .replay {
   background: #6b6807;
 }
-.info_box .buttons .retour:hover {
+.info_box .buttons .replay:hover {
   background: #454304;
   transition: all 0.3s ease;
 }
-.info_box .buttons .retour:active {
+.info_box .buttons .replay:active {
   background: black;
 }
 .info_box .buttons .submit {
@@ -171,6 +170,16 @@ body {
 .info_box .buttons .submit:active {
   background: black;
 }
+.info_box .buttons .retour {
+  background: #84115e;
+}
+.info_box .buttons .retour:hover {
+  background: #600c44;
+  transition: all 0.3s ease;
+}
+.info_box .buttons .retour:active {
+  background: #13020e;
+}
 
 .quiz_box .title, .quiz_box .answers-box {
   font-size: 14px;
@@ -181,7 +190,7 @@ body {
   margin: 20px;
 }
 .quiz_box .answers-box {
-  font-size: 20px;
+  font-size: 13px;
   padding: 30px;
 }
 .quiz_box .answers-box .answers {

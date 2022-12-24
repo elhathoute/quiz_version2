@@ -20,7 +20,7 @@
    .info-list{
      display: block;
     text-align: center;
-     margin-bottom: 20px;
+   
      line-height:40px;
 }
    .buttons{
@@ -41,7 +41,7 @@
     border-radius: 69px;
     @include button-bg(#2ecc71);
    }
-   .retour{
+   .replay{
       @extend .next;
       @include button-bg(#6b6807);
       
@@ -51,6 +51,11 @@
       @extend .next;
       @include button-bg(#07396b);
       
+   }
+   .retour{
+      @extend .next;
+      @include button-bg(#84115e);
+
    }
 }
 }
@@ -66,7 +71,7 @@
    }
  .answers-box{
    @extend .title;
-   font-size: 20px;
+   font-size: 13px;
    padding: 30px;
 
   .answers{

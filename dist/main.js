@@ -8,7 +8,6 @@ let questions =[
       vrai:"Amazon EC2 instances can be launched on demand when needed",
       explication:"Q1:C-The ability to <a href='https://docs.aws.amazon.com/whitepapers/latest/aws-overview/six-advantages-of-cloud-computing.html'> launch instances on demand </a> when needed allows users to launch and terminate instances in response to a varying workload. This is a more economical practice than purchasing enough on-premises servers to handle the peak load."
       
-    
   },{
     question:"2-Which AWS service would simplify the migration of a database to AWS?",
     option_0:"AWS Storage Gateway",
@@ -48,40 +47,38 @@ let resultat=document.getElementById('resultat');
 let title=document.getElementById('title');
 quiz.style.display = "none";
 let next =document.getElementById('next');
-let replay =document.getElementById('retour');
+let replay =document.getElementById('replay');
 let submit =document.getElementById('submit');
+let retour =document.getElementById('retour');
+
 // let info_title=document.getElementById('info-title');
 let answers=document.getElementById('answers-box');
 
 let user_input=document.getElementById("user-input");
 
-let currentIndex=0;
+
+
+
+
+
+// console.log(currentIndex);
+
 let totalReponseVraix=0;
+let currentIndex=Math.floor(Math.random() * 2);
+
+
 
 replay.style.display="none";
 
 submit.style.display="none";
+
+retour.style.display="none";
+
 replay.addEventListener('click',function(){
   window.location.reload();
 
-//    if(currentIndex>0) {
-//      let reponsrvraix=questions[currentIndex].vrai;
-//     console.log('check answer');
-//     currentIndex--;
-//     checkAnswer(reponsrvraix,currentIndex);
-
-//        //remove old question
-//        title.innerHTML='';
-//        answers.innerHTML='';
-// //get autre question
-// addQuestion(questions[currentIndex],questionCount);
-// }
-
-// else if(currentIndex==0 ) {
-//   window.location.reload();
-
-// }
 });
+
 next.style.display='none';
 user_input.addEventListener("keyup",function(){
   if(this.value==''){
@@ -101,8 +98,8 @@ user_input.replaceWith(divUser);
 let nomUser=user_input.value;
 nomUser.className="nom_user";
 divUser.innerHTML="<h3>Bonjour <i class='fa fa-user' aria-hidden='true'></i>  : <span id='nom-user'>"+nomUser +" </span></h3>";
-console.log(user_input);
- console.log(user_input.value);
+// console.log(user_input);
+//  console.log(user_input.value);
    removeBtnNext();
     infos.style.display = "none";
     quiz.style.display = "inline";
@@ -116,25 +113,27 @@ console.log(user_input);
 
   // console.log(buttons);
  
-    addQuestion(questions[currentIndex],questionCount);
+    ajouterQuestion(questions[currentIndex],questionCount);
    
   // next.setAttribute("hidden", true);
 
   submit.onclick=function(){
-   
-      // retour.style.display="block";
+   if(currentIndex==0){
+    retour.style.display="block";
+   }
+    
     
     
     let reponsrvraix=questions[currentIndex].vrai;
     // console.log('check answer');
      currentIndex++;
-    checkAnswer(reponsrvraix,currentIndex);
+    compareReponse(reponsrvraix,currentIndex);
 
        //remove old question
        title.innerHTML='';
        answers.innerHTML='';
 //get autre question
-addQuestion(questions[currentIndex],questionCount);
+ajouterQuestion(questions[currentIndex],questionCount);
   // if(currentIndex==questionCount){
   //   quizBar.classList.remove('active');
   //   resultat.classList.add('active');
@@ -149,7 +148,40 @@ addQuestion(questions[currentIndex],questionCount);
 })
 
 
-function addQuestion(quest,count){
+//retour btn
+
+
+retour.onclick=function(){
+   
+    // alert(currentIndex);
+ 
+
+      currentIndex--;
+   
+    // console.log(totalReponseVraix);
+//   let reponsrvraix=questions[currentIndex].vrai;
+
+
+//   compareReponse(reponsrvraix,currentIndex);
+
+     title.innerHTML='';
+     answers.innerHTML='';
+
+ajouterQuestion(questions[currentIndex],questionCount);
+
+// afficherResultat(questionCount);
+
+
+};
+
+
+//fin retour btn
+
+
+function ajouterQuestion(quest,count){
+ if(currentIndex==0) {
+  retour.style.display="none";
+ }
  if(currentIndex<count){
     //crer le titre de question
     let questionTitre=document.createElement("h2");
@@ -161,6 +193,7 @@ function addQuestion(quest,count){
     //append
     questionTitre.appendChild(questionText);
     title.appendChild(questionTitre);
+   
     //answers
     for(let i=0 ;i<4;i++){
     
@@ -212,7 +245,7 @@ function addQuestion(quest,count){
 var arrayshowQuest=[];
 
 
-function checkAnswer(answer,index){
+function compareReponse(answer,index){
   // console.log(answer);
   // console.log(count);
 
@@ -239,13 +272,14 @@ function checkAnswer(answer,index){
 
  console.log(`corect is':${answer}`);
  console.log(`choisi is':${ReponseChoisi}`);
+
  if(answer==ReponseChoisi){
   // alert("vrais");
   totalReponseVraix++;
 
  }
 
-console.log(totalReponseVraix);
+// console.log(totalReponseVraix);
 }
 
 function afficherResultat(count){
@@ -274,7 +308,7 @@ if(arrayshowQuest.length>0){
   answers.innerHTML+='<h3>Votre Explication est:</h3>';
   for(i=0;i<arrayshowQuest.length;i++){
     answers.innerHTML+= "<p>la question N°:"+(i+1)+"</p>";
-    answers.innerHTML+= "<p>explication"+questions[arrayshowQuest[i]].explication+"</p>";
+    answers.innerHTML+= "<p calss='explication'>explication"+questions[arrayshowQuest[i]].explication+"</p>";
   }
 }
     
@@ -291,10 +325,11 @@ if(arrayshowQuest.length>0){
 
 
     submit.style.display="none";
+    retour.style.display="none";
     quizBar.classList.remove('active');
     resultat.classList.add('active');
-    retour.style.display="block";
-    retour.addEventListener('click',function(){
+    replay.style.display="block";
+    replay.addEventListener('click',function(){
      
       window.location.reload();
     });
@@ -306,7 +341,10 @@ if(arrayshowQuest.length>0){
 
 function removeBtnNext(){
   next.style.display="none";
- 
+  if(currentIndex>0){
+    retour.style.display="block";
+  }
   submit.style.display="block";
+ 
 
 }
