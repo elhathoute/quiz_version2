@@ -50,6 +50,7 @@ let next =document.getElementById('next');
 let replay =document.getElementById('replay');
 let submit =document.getElementById('submit');
 let retour =document.getElementById('retour');
+let time_count=document.getElementById('time-counter');
 
 // let info_title=document.getElementById('info-title');
 let answers=document.getElementById('answers-box');
@@ -65,7 +66,7 @@ let user_input=document.getElementById("user-input");
 
 let totalReponseVraix=0;
 let currentIndex=Math.floor(Math.random() * 2);
-
+let countDownTimeInterval;//pour stop countdown
 
 
 replay.style.display="none";
@@ -73,6 +74,8 @@ replay.style.display="none";
 submit.style.display="none";
 
 retour.style.display="none";
+
+time_count.style.display="none";
 
 replay.addEventListener('click',function(){
   window.location.reload();
@@ -92,6 +95,8 @@ user_input.addEventListener("keyup",function(){
 
 
 next.addEventListener('click',function(){
+  countDownTime(30,lenghtOfTable);
+  console.log(time_count.innerHTML);
   const divUser = document.createElement("div");
 
 user_input.replaceWith(divUser);
@@ -106,10 +111,7 @@ divUser.innerHTML="<h3>Bonjour <i class='fa fa-user' aria-hidden='true'></i>  : 
     information.classList.remove('active');
     quizBar.classList.add('active');
     
-    info_title.innerHTML=`
-    <div id="title" class="title"> Quiz Application</div>
-    <div class="timer">30</div>  
-    `;
+    info_title.remove();
 
   // console.log(buttons);
  
@@ -118,6 +120,8 @@ divUser.innerHTML="<h3>Bonjour <i class='fa fa-user' aria-hidden='true'></i>  : 
   // next.setAttribute("hidden", true);
 
   submit.onclick=function(){
+  clearInterval(countDownTimeInterval);
+  countDownTime(30,lenghtOfTable);
    if(currentIndex==0){
     retour.style.display="block";
    }
@@ -152,7 +156,9 @@ ajouterQuestion(questions[currentIndex],questionCount);
 
 
 retour.onclick=function(){
-   
+  time_count.style.display="block";
+  clearInterval(countDownTimeInterval);
+  countDownTime(30,lenghtOfTable);
     // alert(currentIndex);
  
 
@@ -224,7 +230,7 @@ function ajouterQuestion(quest,count){
     
     
       answers.appendChild(answerDiv);
-      let checkboxAnswer=document.getElementById(`option_${i}`);
+      // let checkboxAnswer=document.getElementById(`option_${i}`);
       // checkboxAnswer.addEventListener('click',function(){
       //   let answerChecked=label.getAttribute(`id`);
         
@@ -238,6 +244,10 @@ function ajouterQuestion(quest,count){
       // })
       
     }
+    let numOfQuestion=document.createElement("div");
+    numOfQuestion.className="num-question";
+    answers.appendChild(numOfQuestion);
+    numOfQuestion.innerHTML=(currentIndex+1)+'/'+lenghtOfTable;
  }
 
 }
@@ -341,10 +351,31 @@ if(arrayshowQuest.length>0){
 
 function removeBtnNext(){
   next.style.display="none";
+  time_count.style.display="block";
   if(currentIndex>0){
     retour.style.display="block";
   }
   submit.style.display="block";
  
 
+}
+
+function countDownTime(time,count){
+
+  if(currentIndex<count){
+  countDownTimeInterval=setInterval(function(){
+     time_count.innerHTML=time +' seconds';
+ 
+    if(--time<0){
+      clearInterval(countDownTimeInterval);
+      submit.click();
+    
+    }
+       
+  },1000);
+  }
+  if(currentIndex==count-1){
+    clearInterval(countDownTimeInterval);
+    time_count.remove();
+  }
 }

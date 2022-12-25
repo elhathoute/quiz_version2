@@ -7,11 +7,11 @@
 
 body {
   color: #ddd;
-  background-image: url("https://th.bing.com/th?id=OIF.LFQd2j%2b7dAGlQVnmvYvsCw&pid=ImgDet&rs=1");
+  background-color: #2B3A55;
 }
 
 .container {
-  margin-top: 200px;
+  margin-top: 100px;
 }
 .container .user {
   margin: 20px 100px;
@@ -113,12 +113,15 @@ body {
 .info_box {
   margin-top: 150px;
 }
+.info_box #time-counter {
+  color: red;
+}
 .info_box .info-title {
-  color: rgb(213, 196, 170);
+  color: rgb(255, 159, 14);
   text-align: center;
   font-size: 20px;
   margin-bottom: 40px;
-  text-shadow: 1px 1px #7dcc2e;
+  text-shadow: 1px 1px #2232a9;
 }
 .info_box .info-list {
   display: block;
@@ -197,9 +200,13 @@ body {
   padding: 0px 10px;
   display: flex;
   justify-content: start;
-  background-color: rgb(233, 233, 233);
-  border-radius: 5px;
+  background-color: #b8c1ec;
+  border-radius: 4px;
+  height: 60px;
+  cursor: pointer;
+  padding: 15px;
   margin-top: 10px;
+  box-shadow: 3px 3px #2ecc71;
 }
 .quiz_box .answers-box .answers:not(:last-child) {
   border-bottom: 2px solid rgb(161, 130, 130);
@@ -227,4 +234,22 @@ body {
   color: rgb(30, 21, 210);
   font-size: 17px;
   margin: 2px;
+}
+.quiz_box .answers-box .num-question {
+  margin-top: 10px;
+  height: 30px;
+  align-items: center;
+  padding-top: 6px;
+  background-color: rgb(81, 148, 170);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.quiz_box .answers-box #nom-user {
+  color: #ff4203;
+  font-size: 16px;
+  font-weight: bold;
+  margin-right: 10px;
+  box-shadow: 2px 2px 2px 2px rgb(201, 255, 74);
 }/*# sourceMappingURL=main.css.map */
