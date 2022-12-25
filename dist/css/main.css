@@ -6,8 +6,8 @@
 }
 
 body {
-  color: #ddd;
-  background-color: #2B3A55;
+  color: rgb(255, 255, 255);
+  background-color: #C7B198;
 }
 
 .container {
@@ -28,8 +28,8 @@ body {
 .container .user input {
   height: 30px;
   border-radius: 5px;
-  border: 2px dashed gray;
-  background-color: rgb(244, 255, 181);
+  border: 2px solid gray;
+  background-color: rgb(253, 253, 253);
 }
 .container .user input:focus {
   background-color: rgb(206, 218, 216);
@@ -135,6 +135,7 @@ body {
   padding: 10px 80px;
 }
 .info_box .buttons .next, .info_box .buttons .retour, .info_box .buttons .submit, .info_box .buttons .replay {
+  margin-right: 5px;
   cursor: pointer;
   width: 90%;
   color: white;
@@ -186,7 +187,7 @@ body {
 
 .quiz_box .title, .quiz_box .answers-box {
   font-size: 14px;
-  color: rgba(206, 208, 206, 0.803);
+  color: rgb(252, 255, 252);
   text-align: center;
   border: 2px dashed rgb(41, 18, 170);
   border-radius: 5px;
@@ -209,7 +210,7 @@ body {
   box-shadow: 3px 3px #2ecc71;
 }
 .quiz_box .answers-box .answers:not(:last-child) {
-  border-bottom: 2px solid rgb(161, 130, 130);
+  border-bottom: 2px solid rgb(249, 249, 249);
 }
 .quiz_box .answers-box .answers #option_0 {
   cursor: pointer;

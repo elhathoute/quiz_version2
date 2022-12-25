@@ -31,7 +31,9 @@
    justify-content: space-around;
    align-items:center;
    padding: 10px 80px;
+  
    .next{
+   margin-right: 5px;
     cursor: pointer;
     width: 90%;
     color:white;
@@ -65,7 +67,7 @@
 .quiz_box{
    .title{
       font-size: 14px;
-      color: rgba(206, 208, 206, 0.803);
+      color: rgb(252, 255, 252);
       text-align: center;
       border: 2px dashed rgb(41, 18, 170);
       border-radius: 5px;
@@ -88,7 +90,7 @@
   margin-top: 10px;
   box-shadow:3px 3px  #2ecc71;
    &:not(:last-child) {
-      border-bottom: 2px solid rgb(161, 130, 130);
+      border-bottom: 2px solid rgb(249, 249, 249);
    }
   
   
